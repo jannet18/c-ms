@@ -12,6 +12,7 @@ import managementRoutes from "./routes/Management.js";
 import User from "./models/User.js";
 import { dataUser } from "./data/index.js";
 import mongoose from "mongoose";
+import path from "path";
 
 //CONFIGURATION
 dotenv.config();
@@ -33,6 +34,13 @@ app.use("/management", managementRoutes);
 
 // MONGO SETUP
 const PORT = process.env.PORT || 9000;
+const __dirname = path.resolve();
+app.use(express.static(__dirname));
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -41,6 +49,6 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     // add data once
-    User.insertMany(dataUser);
+    // User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error}, did not connect!`));
