@@ -10,7 +10,9 @@ import salesRoutes from "./routes/Sales.js";
 import managementRoutes from "./routes/Management.js";
 // data imports
 import User from "./models/User.js";
-import { dataUser } from "./data/index.js";
+import Product from "./models/product.js";
+import ProductStat from "./models/ProductStat.js";
+import { dataUser, dataProductStat, dataProduct } from "./data/index.js";
 import mongoose from "mongoose";
 import path from "path";
 
@@ -50,5 +52,7 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     // add data once
     // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
   })
   .catch((error) => console.log(`${error}, did not connect!`));
