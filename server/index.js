@@ -12,7 +12,13 @@ import managementRoutes from "./routes/Management.js";
 import User from "./models/User.js";
 import Product from "./models/product.js";
 import ProductStat from "./models/ProductStat.js";
-import { dataUser, dataProductStat, dataProduct } from "./data/index.js";
+import Transaction from "./models/Transaction.js";
+import {
+  dataUser,
+  dataProductStat,
+  dataProduct,
+  dataTransaction,
+} from "./data/index.js";
 import mongoose from "mongoose";
 import path from "path";
 
@@ -54,5 +60,6 @@ mongoose
     // User.insertMany(dataUser);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
+    // Transaction.insertMany(dataTransaction);
   })
   .catch((error) => console.log(`${error}, did not connect!`));
