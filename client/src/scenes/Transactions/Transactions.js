@@ -3,25 +3,21 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery } from "state/api";
 import Header from "components/Header";
 import { Box, useTheme } from "@mui/material";
+import DataGridCustomToolbar from "components/DataGridCustomToolbar.jsx";
 
 function Transactions() {
   const theme = useTheme();
   // values to be sent to the backend
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(20);
-  //   const [sort, setSort] = useState([]);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-  const { data } = useGetTransactionsQuery({});
-  //   const data = {};
-  data[Symbol?.iterator] = () => {
-    return {
-      page,
-      pageSize,
-      sort: JSON.stringify(sort),
-      search,
-    };
-  };
+  const { data, isLoading } = useGetTransactionsQuery({
+    page,
+    pageSize,
+    sort: JSON.stringify(sort),
+    search,
+  });
 
   console.log(data);
   const columns = [
@@ -58,11 +54,10 @@ function Transactions() {
     <Box m="1.5rem 2.5rem">
       <Header title="TRANSACTIONS" subtitle="List of transactions" />
       <Box
-        mt="40px"
-        height="75vh"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
-            borderBottom: "none",
+            border: "none",
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
@@ -81,12 +76,12 @@ function Transactions() {
             borderTop: "none",
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            backgroundColor: `${theme.palette.secondary[200]} !important`,
+            color: `${theme.palette.secondary[200]} !important`,
           },
         }}
       >
         <DataGrid
-          //   loading={isLoading || !data}
+          loading={isLoading || !data}
           getRowId={(row) => row._id}
           rows={(data && data?.transactions) || []}
           columns={columns}
@@ -100,6 +95,10 @@ function Transactions() {
           onPaginationModelChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          components={{ Toolbar: DataGridCustomToolbar }}
+          // componentsProps={{
+          //   toolbar: { SearchInput, setSearchInput, setSearch },
+          // }}
         />
       </Box>
     </Box>

@@ -42,7 +42,7 @@ export const getTransactions = async (req, res) => {
   try {
     // serverside pagination
     // sort should look like this: {"field": "userdId", "sort" : "desc" }
-    const [page = 1, pageSize = 20, sort = null, search = ""] = req.query;
+    const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
     // formatted sort should look like {userId: -1}
     const generalSort = () => {
       const sortParsed = JSON.parse(sort);
