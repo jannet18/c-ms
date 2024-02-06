@@ -20,7 +20,7 @@ function Transactions() {
     search,
   });
 
-  console.log(data);
+  // console.log(data);
   const columns = [
     {
       field: "_id",

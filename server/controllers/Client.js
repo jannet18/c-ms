@@ -1,10 +1,12 @@
-// import Product from "../models/Product.js";
+import mongoose from "mongoose";
 import Product from "../models/product.js";
 import ProductStat from "../models/ProductStat.js";
 import Transaction from "../models/Transaction.js";
 import User from "../models/User.js";
-import { getCountryIso3 } from "country-iso-2-to-3";
-
+// const getCountryISO3 = require("country-iso-2-to-3");
+import getCountryIso3 from "country-iso-2-to-3";
+// import pkg from "country-iso-2-to-3";
+// const { getCountryIS03 } = pkg;
 export const getProducts = async (req, res) => {
   try {
     // get products
