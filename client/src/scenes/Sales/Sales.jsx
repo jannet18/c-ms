@@ -21,8 +21,8 @@ function Sales() {
             label="View"
             onChange={(e) => setView(e.target.value)}
           >
-            <MenuItem value="Sales">Sales</MenuItem>
-            <MenuItem value="Units">Units</MenuItem>
+            <MenuItem value="sales">Sales</MenuItem>
+            <MenuItem value="units">Units</MenuItem>
           </Select>
         </FormControl>
         <OverviewChart view={view} />
