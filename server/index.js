@@ -10,7 +10,7 @@ import salesRoutes from "./routes/Sales.js";
 import managementRoutes from "./routes/Management.js";
 // data imports
 import User from "./models/User.js";
-import Product from "./models/product.js";
+// import Product from "./models/product.js";
 import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
 import {
