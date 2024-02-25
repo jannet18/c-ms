@@ -13,7 +13,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
     const [monthlyData] = data;
     const monthly = monthlyData.monthlyData;
-    console.log(monthly);
+    // console.log(monthly);
     const totalSalesLine = {
       id: "totalSales",
       color: theme.palette.secondary.main,
@@ -45,7 +45,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
     );
     return [[totalSalesLine], [totalUnitsLine]];
     // eslint-disable-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, theme.palette.secondary]);
 
   if (!data || isLoading) return "Loading...";
   return (
@@ -105,7 +105,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         },
         orient: "bottom",
         tickSize: 5,
-        tickPadding: 5,
+        tickPadding: 10,
         tickRotation: 0,
         legend: isDashboard ? "" : "Month",
         legendOffset: 36,
@@ -114,7 +114,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
       axisLeft={{
         orient: "left",
         tickSize: 5,
-        tickPadding: 5,
+        tickPadding: 10,
         tickRotation: 5,
         legend: isDashboard
           ? ""
