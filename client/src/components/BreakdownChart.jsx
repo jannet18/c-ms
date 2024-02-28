@@ -132,7 +132,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
         left="45%"
         color={theme.palette.secondary[400]}
         textAlign="center"
-        pointerEvets="none"
+        pointerEvents="none"
         fontSize="4px"
         sx={{
           transform: isDashboard
