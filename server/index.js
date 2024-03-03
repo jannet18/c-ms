@@ -49,15 +49,18 @@ const PORT = process.env.PORT || 9000;
 // const path = require("path");
 const __dirname = path.resolve();
 app.use(express.static(__dirname));
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname), "../client"));
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "/public/index.html"));
+  });
+}
 
 mongoose
   .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));

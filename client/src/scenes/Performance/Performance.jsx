@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetUserPerformanceQuery } from "state/api";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
@@ -38,7 +38,7 @@ const Performance = () => {
       field: "cost",
       headerName: "Cost",
       flex: 1,
-      renderCell: (params) => `$${Number(params.value.toFixed(2))}`,
+      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
   ];
 
