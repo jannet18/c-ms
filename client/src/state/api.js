@@ -52,7 +52,7 @@ export const api = createApi({
       providesTags: ["Performance"],
     }),
     getDashboard: build.query({
-      query: () => "general/dahsboard",
+      query: () => "general/dashboard",
       providesTags: ["Dashboard"],
     }),
   }),
