@@ -46,17 +46,27 @@ app.use("/management", managementRoutes);
 
 // MONGO SETUP
 const PORT = process.env.PORT || 9000;
-// const path = require("path");
-const __dirname = path.resolve();
-app.use(express.static(__dirname));
-if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.join(__dirname, "../client")));
+const path = require("path");
 
-  app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "index.html"));
-  });
-}
+// const __dirname = path.resolve();
+// const clientPath = path.join(__dirname, "../client")
+// app.use(express.static(__dirname));
+// if (process.env.NODE_ENV === "production") {
+//   app.use("/", express.static(path.join(__dirname, "../client")));
 
+//   app.get("/*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "../client", "index.html"));
+//   });
+// }
+
+// define absolute path too the client
+const clientPath = path.join(__dirname, "../client");
+// serve static files from client/public dir
+app.use(express.static(path.join(clientPath, "public")));
+// serve index.html for any other routes
+app.get("/", (req, res) => {
+  res.sendFile(path.join(clientPath, "index.html"));
+});
 mongoose
   .connect(process.env.MONGO_URL, {
     // useNewUrlParser: true,
