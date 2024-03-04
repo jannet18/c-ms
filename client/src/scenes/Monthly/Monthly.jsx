@@ -40,7 +40,7 @@ function Monthly() {
     );
     const formattedData = [totalSalesLine, totalUnitsLine];
     return [formattedData];
-  }, [data]);
+  }, [data, theme.palette.secondary]);
   return (
     <Box m="25px">
       <Header title="MONTHLY SALES" subtitle="Chart of monthly sales" />
