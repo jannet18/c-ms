@@ -46,8 +46,7 @@ app.use("/management", managementRoutes);
 
 // MONGO SETUP
 const PORT = process.env.PORT || 9000;
-
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 // const clientPath = path.join(__dirname, "../client")
 // app.use(express.static(__dirname));
 // if (process.env.NODE_ENV === "production") {
