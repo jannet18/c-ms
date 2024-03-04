@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useGetUserPerformanceQuery } from "state/api";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
