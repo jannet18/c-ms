@@ -50,10 +50,10 @@ const PORT = process.env.PORT || 9000;
 const __dirname = path.resolve();
 app.use(express.static(__dirname));
 if (process.env.NODE_ENV === "production") {
-  app.use("/*", express.static(path.join(__dirname)));
+  app.use("/", express.static(path.join(__dirname), "../client"));
 
-  app.get("*/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "/public/index.html"));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "/public/index.html"));
   });
 }
 
